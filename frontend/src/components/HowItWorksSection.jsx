@@ -9,7 +9,7 @@ export const HowItWorksSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Как это 
             <span className="text-yellow-400"> работает?</span>
           </h2>
@@ -20,7 +20,7 @@ export const HowItWorksSection = () => {
 
         {/* Steps */}
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {mockData.howItWorks.map((step, index) => (
               <div key={index} className="relative">
                 <Card className="bg-gray-800/50 border-yellow-500/20 hover:border-yellow-500/40 transition-all duration-300 h-full">
@@ -61,7 +61,7 @@ export const HowItWorksSection = () => {
             <div className="inline-flex items-center space-x-2 bg-green-500/10 border border-green-500/20 px-6 py-3 rounded-full">
               <CheckCircle className="text-green-400" size={20} />
               <span className="text-green-400 font-medium">
-                Запуск рекламы уже через 24 часа после оплаты!
+                Запуск рекламы сразу после оплаты!
               </span>
             </div>
           </div>

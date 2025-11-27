@@ -34,7 +34,7 @@ export const PricingSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Тарифы на 
             <span className="text-yellow-400"> размещение рекламы</span>
           </h2>
@@ -44,7 +44,7 @@ export const PricingSection = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           {mockData.pricing.map((plan, index) => (
             <Card 
               key={index}
@@ -75,7 +75,7 @@ export const PricingSection = () => {
 
               <CardContent className="pt-0">
                 {/* Features */}
-                <div className="space-y-3 mb-8">
+                <div className="space-y-3 mb-6">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center space-x-3">
                       <div className="w-5 h-5 bg-yellow-500/20 rounded-full flex items-center justify-center flex-shrink-0">
@@ -86,6 +86,13 @@ export const PricingSection = () => {
                   ))}
                 </div>
 
+                {/* Price */}
+                {plan.price && (
+                  <div className="mb-6 text-center">
+                    <p className="text-gray-400 text-sm font-medium">{plan.price}</p>
+                  </div>
+                )}
+
                 {/* CTA Button */}
                 <Button 
                   onClick={scrollToContacts}
@@ -95,7 +102,7 @@ export const PricingSection = () => {
                       : 'bg-gray-700 hover:bg-gray-600 text-white border border-yellow-500/20 hover:border-yellow-500/40'
                   } font-medium transition-all`}
                 >
-                  Узнать стоимость
+                  Оставить заявку
                 </Button>
               </CardContent>
             </Card>
@@ -111,13 +118,11 @@ export const PricingSection = () => {
               </div>
               
               <h3 className="text-2xl font-bold text-white mb-4">
-                Специальное предложение
+                Специальное предложение для рекламных агентств и ИП
               </h3>
               
               <p className="text-gray-300 text-lg mb-6">
-                <strong className="text-yellow-400">Скидка 5%</strong> при продлении кампании
-                <br />
-                Чем дольше реклама — тем больше результат!
+                Аренда диджитал-экрана в полное управление контентом. Зарабатывайте на рекламе без ограничений!
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

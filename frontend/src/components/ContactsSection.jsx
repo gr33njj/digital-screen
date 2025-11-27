@@ -22,11 +22,36 @@ export const ContactsSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Mock form submission
-    alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
-    setFormData({ name: '', phone: '', email: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: 'Спасибо за заявку! Мы свяжемся с вами в ближайшее время.' });
+        setFormData({ name: '', phone: '', email: '', message: '' });
+      } else {
+        setSubmitStatus({ type: 'error', message: data.detail || 'Ошибка отправки. Попробуйте позже.' });
+      }
+    } catch (error) {
+      setSubmitStatus({ type: 'error', message: 'Ошибка соединения. Попробуйте позже или позвоните нам.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -34,7 +59,7 @@ export const ContactsSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Свяжитесь с нами 
             <span className="text-yellow-400"> прямо сейчас!</span>
           </h2>
@@ -43,7 +68,7 @@ export const ContactsSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div className="space-y-8">
             {/* Quick Contact */}
@@ -136,9 +161,8 @@ export const ContactsSection = () => {
                     <Clock className="text-yellow-400" size={20} />
                   </div>
                   <div>
-                    <p className="text-white font-medium">Режим работы</p>
-                    <p className="text-gray-400">Пн-Пт: 9:00 - 18:00</p>
-                    <p className="text-gray-400">Сб-Вс: 10:00 - 16:00</p>
+                    <p className="text-white font-medium">Режим работы отдела продаж</p>
+                    <p className="text-gray-400">Пн-Пт: 8:00 - 17:00</p>
                   </div>
                 </div>
               </CardContent>
@@ -230,10 +254,21 @@ export const ContactsSection = () => {
                   type="submit"
                   className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold"
                   size="lg"
+                  disabled={isSubmitting}
                 >
                   <Send className="mr-2" size={18} />
-                  Отправить заявку
+                  {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
                 </Button>
+
+                {submitStatus && (
+                  <div className={`p-4 rounded-lg text-center text-sm ${
+                    submitStatus.type === 'success' 
+                      ? 'bg-green-500/10 border border-green-500/20 text-green-400' 
+                      : 'bg-red-500/10 border border-red-500/20 text-red-400'
+                  }`}>
+                    {submitStatus.message}
+                  </div>
+                )}
 
                 <p className="text-gray-500 text-xs text-center">
                   Нажимая кнопку, вы соглашаетесь с обработкой персональных данных

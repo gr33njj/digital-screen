@@ -18,7 +18,7 @@ export const BenefitsSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Почему выбирают рекламу на 
             <span className="text-yellow-400"> нашем экране?</span>
           </h2>
@@ -28,7 +28,7 @@ export const BenefitsSection = () => {
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {mockData.benefits.map((benefit, index) => {
             const IconComponent = iconMap[benefit.icon];
             
@@ -59,20 +59,20 @@ export const BenefitsSection = () => {
 
         {/* Bottom Stats */}
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center space-x-8 bg-gray-900/50 border border-yellow-500/20 rounded-2xl px-8 py-6">
+          <div className="inline-flex flex-wrap items-center justify-center gap-6 sm:gap-8 bg-gray-900/50 border border-yellow-500/20 rounded-2xl px-6 sm:px-8 py-6">
             <div className="text-center">
               <div className="text-2xl font-bold text-yellow-400">3+</div>
               <div className="text-sm text-gray-400">года работы</div>
             </div>
-            <div className="w-px h-12 bg-gray-700"></div>
+            <div className="hidden sm:block w-px h-12 bg-gray-700"></div>
             <div className="text-center">
               <div className="text-2xl font-bold text-yellow-400">24/7</div>
               <div className="text-sm text-gray-400">поддержка</div>
             </div>
-            <div className="w-px h-12 bg-gray-700"></div>
+            <div className="hidden sm:block w-px h-12 bg-gray-700"></div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-yellow-400">5%</div>
-              <div className="text-sm text-gray-400">скидка</div>
+              <div className="text-2xl font-bold text-yellow-400">15%</div>
+              <div className="text-sm text-gray-400">скидка 15% при продлении</div>
             </div>
           </div>
         </div>
