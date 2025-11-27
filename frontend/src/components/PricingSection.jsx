@@ -125,21 +125,13 @@ export const PricingSection = () => {
                 Аренда диджитал-экрана в полное управление контентом. Зарабатывайте на рекламе без ограничений!
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex justify-center">
                 <Button 
                   onClick={scrollToContacts}
                   size="lg"
                   className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold"
                 >
                   Получить персональное предложение
-                </Button>
-                
-                <Button 
-                  variant="outline"
-                  size="lg"
-                  className="border-yellow-500/50 text-yellow-400 hover:bg-yellow-500/10"
-                >
-                  Задать вопрос
                 </Button>
               </div>
             </CardContent>
